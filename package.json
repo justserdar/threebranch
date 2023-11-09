@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "@justserdar/threebranch",
+  "description": "Nuxt 3 layer with Three.js and GSAP.",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxi dev",
+    "clean": "rimraf .nuxt .output node_modules"
+  },
+  "dependencies": {
+    "gsap": "3.12.2",
+    "lil-gui": "^0.19.1",
+    "nuxt": "3.8.0",
+    "three": "0.157.0",
+    "vue": "3.3.8"
+  },
+  "devDependencies": {
+    "@types/three": "^0.158.2"
+  }
+}
