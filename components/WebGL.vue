@@ -65,7 +65,7 @@ const props = withDefaults(
   {
     size: 'full',
     customClassOverride: false,
-    debug: true,
+    debug: false,
     fog: false,
     scroller: false,
     scrollerOptions: {},
@@ -85,13 +85,14 @@ const props = withDefaults(
 )
 
 const appConfig = useAppConfig()
-const performance = computed(() => props.performance ?? appConfig?.threebranch.defaultPerformance)
-const antialias = computed(() => props.antialias ?? appConfig?.threebranch.defaultAntialias)
+const performance = ref(props.performance ? props.performance : appConfig?.threebranch.defaultPerformance)
+const antialias = ref(props.antialias ? props.antialias : appConfig?.threebranch.defaultAntialias)
 const toneMappingExposure = ref(props.toneMappingExposure ?? 1)
 
 const isLoading = ref(props.loading ?? true)
 const isFullScreen = ref(props.size === 'full' ? true : false)
 const isFoggy = ref(props.fog ? true : false)
+const debugging = ref(props.debug ? true : false)
 
 const scene = new THREE.Scene()
 if(isFoggy) scene.fog = new THREE.FogExp2( 0xbbbbbb, 0.001 );
@@ -130,7 +131,7 @@ onMounted(async () => {
   renderer.setSize(canvas.clientWidth, canvas.clientHeight)
   canvas.appendChild(renderer.domElement)
   const stats = new Stats()
-  canvas.appendChild(stats.dom)
+  if(debugging.value) canvas.appendChild(stats.dom)
 
 
   const geometry = new THREE.BoxGeometry()
@@ -179,12 +180,11 @@ onMounted(async () => {
   const render = () => {
     requestAnimationFrame(render)
     camera.lookAt(0, 1, 0)
-    if(props)
     cube.rotation.x += 0.01
     cube.rotation.y += 0.01
 
     renderer.render(scene, camera)
-    stats.update()
+    if(debugging.value) stats.update()
   }
 
   render()
