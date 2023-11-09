@@ -3,6 +3,7 @@
   "description": "Nuxt 3 layer with Three.js and GSAP.",
   "version": "0.0.1",
   "type": "module",
+  "private": false,
   "main": "./nuxt.config.ts",
   "scripts": {
     "clean": "rimraf .nuxt .output node_modules"
