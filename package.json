@@ -1,7 +1,9 @@
 {
   "name": "@justserdar/threebranch",
+  "author": "justserdar",
+  "keywords": ["JustSerdar", "Nuxt 3", "Three.js", "GSAP"],
   "description": "Nuxt 3 layer with Three.js and GSAP.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "private": false,
   "main": "./nuxt.config.ts",
