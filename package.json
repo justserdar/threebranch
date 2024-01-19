@@ -11,7 +11,7 @@
     "clean": "rimraf .nuxt .output node_modules"
   },
   "dependencies": {
-    "gsap": "3.12.2",
+    "gsap": "3.12.5",
     "lil-gui": "^0.19.1",
     "nuxt": "3.8.0",
     "three": "0.157.0",
